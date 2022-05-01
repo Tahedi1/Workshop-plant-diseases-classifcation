@@ -24,10 +24,8 @@ import seaborn as sn
 import random
 import matplotlib.cm as cm
 
-gdown "https://drive.google.com/uc?export=download&id=1sEyTdRbQ3wdxHZt-Ab-OPvXb1c_S453Z"
-tar -xf /content/PlantVillage.tar.gz
 
-train_path = '/content/PlantVillage/train'
+train_path = './PlantVillage/train'
 lists = os.listdir(train_path)
 diseases = []
 crops = []
@@ -41,7 +39,7 @@ for folder in lists:
       crops.extend([folder.split(sep='___')[0] for i in range(len(files))])
 train_df = pd.DataFrame(list(zip(file_lst,crops,diseases)),columns =["Paths","Crops","Diseases"])
 
-validation_path = '/content/PlantVillage/val'
+validation_path = './PlantVillage/val'
 lists = os.listdir(validation_path)
 diseases = []
 crops = []
@@ -126,6 +124,6 @@ target_dir = './results/'
 model.save(os.path.join(target_dir+'/my_model.h5'))
 
 history_df = pd.DataFrame(history.history)
-history_df.to_csv(os.path.join(target_dir+'/hystory.csv'),index=False)
+history_df.to_csv(os.path.join(target_dir+'/history.csv'),index=False)
 
 
